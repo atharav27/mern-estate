@@ -3,7 +3,7 @@ import bcryptjs from 'bcryptjs';
 
 
 
-const sigup = async (req, res) => {
+const sigup = async (req, res, next) => {
 
 
 const {username, email, password} = req.body;
@@ -14,7 +14,7 @@ try{
     await newUser.save();
     res.status(201).json('user added sucessfully!');
 }catch(error){
-    res.status(500).json(error.message);
+    next(error)
 }
 
 }
