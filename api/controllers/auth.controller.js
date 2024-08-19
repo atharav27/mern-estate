@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
+// import { errorHandler } from "../utils/error.js";
 
 
 
@@ -15,6 +16,7 @@ try{
     res.status(201).json('user added sucessfully!');
 }catch(error){
     next(error)
+    
 }
 
 }
