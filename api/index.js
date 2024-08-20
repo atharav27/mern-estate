@@ -2,8 +2,8 @@ import express from 'express';
 import  mongoose from 'mongoose';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
-// import dotenv from 'dotenv';
-// dotenv.config();
+import dotenv from 'dotenv';
+dotenv.config();
 // console.log(process.env.MONGO); 
 
 //connection to database
