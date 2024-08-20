@@ -15,6 +15,12 @@ const SignUP = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic frontend validation
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("All fields are required");
+      return;
+    }
     try {
       setLoading(true);
       const res = await fetch("/api/auth/signup", {
@@ -33,9 +39,9 @@ const SignUP = () => {
       }
       setLoading(false);
       setError(null);
-      navigate('/sign-in')
+      navigate("/sign-in");
     } catch (error) {
-      setLoading(false); 
+      setLoading(false);
       setError(error.message);
     }
   };
