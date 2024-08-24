@@ -20,7 +20,7 @@ import {
   signOutUserFailure,
 } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -40,6 +40,7 @@ const Profile = () => {
 
   const handleFileUpload = () => {
     const storage = getStorage(app);
+    
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -115,6 +116,7 @@ const Profile = () => {
         dispatch(deleteUserFailure(error.message));
         return;
       }
+      
       dispatch(signOutUserSuccess(data));
     } catch (error) {
       dispatch(signOutUserFailure(error.message));

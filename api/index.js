@@ -4,6 +4,7 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 // console.log(process.env.MONGO); 
 
@@ -17,8 +18,10 @@ mongoose
     console.error("Connection failed!", error); 
   });
 
+
 const app = express() ;
 app.use(express.json()); 
+app.use(cookieParser());
 
 
 //routes
@@ -31,7 +34,7 @@ app.use((err, req, res,  next) =>{
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error "; 
   return res.status(statusCode).json( {
-    sucess: false,
+    success: false,
     statusCode,
     message
   });
