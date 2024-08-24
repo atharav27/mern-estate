@@ -255,7 +255,8 @@ try {
         <div className="flex flex-col gap-1 items-center">
           <button onClick={()=> handleListingDelete(listing._id)} className="text-red-700 bg-red-500/20 w-full px-2 py-1 rounded
            uppercase">Delete</button>
-          <button className="text-green-700 bg-green-500/20 rounded uppercase w-full px-2 py-1  ">Update</button>
+           <Link to={`/update-listing/${listing._id}`}>
+          <button  className="text-green-700 bg-green-500/20 rounded uppercase w-full px-2 py-1  ">Update</button></Link>
         </div>
        </div>
       ))}</div> }
