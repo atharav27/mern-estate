@@ -12,7 +12,8 @@ import {useNavigate} from 'react-router-dom'
 
 const CreateListing = () => {
   const navigate = useNavigate()
-  const {currentUser} =useSelector((state) => state.user)
+  const {currentUser} = useSelector((state) => state.user)
+
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({ 
     imageUrls: [],
@@ -141,6 +142,7 @@ const CreateListing = () => {
       });
       const data = await res.json();
       console.log(data);
+      console.log( currentUser)
       setLoading(false);
       if (data.success === false) {
         setError(data.message);
