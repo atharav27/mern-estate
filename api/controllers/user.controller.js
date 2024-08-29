@@ -58,5 +58,25 @@ if(req.user.id === req.params.id) {
 }
 
 
+export const getUser = async (req, res, next) => {
+  try {
+    // Fetch the user by ID
+    const user = await User.findById(req.params.id);
+
+    // If the user is not found, return a 404 error
+    if (!user) {
+      return next(errorHandler(404, 'User not found!'));
+    }
+
+    // Destructure to remove the password field from the response
+    const { password, ...rest } = user._doc;
+
+    // Send the remaining user data as JSON
+    res.status(200).json(rest);
+  } catch (error) {
+    // Pass any errors to the error handling middleware
+    next(error);
+  }
+};
 
 export default test;
